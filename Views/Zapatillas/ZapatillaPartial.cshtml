@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Zapatilla Partial";
+}
+
+@model Imagen
+
+@{
+    Zapatilla zapatilla = ViewData["ZAPATILLASELECCIONADA"] as Zapatilla
+}
+
+<h1>@ViewData["POSICION"] de @ViewData["ULTIMO"]</h1>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        IdProducto: @zapatilla.IdProducto
+    </li>    
+    <li class="list-group-item">
+        Nombre: @zapatilla.Nombre
+    </li>    
+    <li class="list-group-item">
+        Descripcion: @zapatilla.Descripcion
+    </li>    
+    <li class="list-group-item">
+        Precio: @zapatilla.Precio
+    </li>
+</ul>
