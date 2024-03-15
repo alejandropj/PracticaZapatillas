@@ -1,0 +1,43 @@
+﻿@model List<Zapatilla>
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nuevas imágenes</h1>
+
+<h2 class="text-primary">@ViewData["MENSAJE"]</h2>
+
+<button onclick="agregarCaja()">Nueva caja imagen JQUERY</button>
+
+<hr />
+
+<form method="post">
+    <h1>Formulario</h1>
+    <button class="btn btn-info">Insertar</button>
+
+    <label>Seleccione zapatilla</label>
+    <select name="zapatilla">
+        @foreach(Zapatilla zap in Model)
+        {
+            <option value="@zap.IdProducto">@zap.Nombre</option>
+        }
+    </select>
+    <div id="cajaInputs">
+        <label>Imagen 1</label>
+        <input type="text" name="imagen" />
+    </div>
+</form>
+
+@section Scripts{
+    <script>
+        var contador = 2;
+
+        function agregarCaja(){
+            var fila =
+                "<label>Imagen " + contador + "</label>" +
+                "<input type='text' name= 'imagen' /> ";
+            document.getElementById("cajaInputs").insertAdjacentHTML("beforeend", fila);
+            contador++;
+        }
+    </script>
+}

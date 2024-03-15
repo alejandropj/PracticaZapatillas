@@ -25,6 +25,7 @@ namespace PracticaZapatillas.Controllers
             Zapatilla zapatilla = await this.repo.FindZapatillaAsync(idZapatilla);
             return View(zapatilla);
         }
+
         public async Task<IActionResult> ZapatillaImagen
             (int? posicion, int idZapatilla)
         {
@@ -87,6 +88,21 @@ namespace PracticaZapatillas.Controllers
             ViewData["ANTERIOR"] = anterior;
             ViewData["POSICION"] = posicion;
             return PartialView("_ZapatillaPartial", model.Imagen);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            List<Zapatilla> zapatillas = await this.repo.GetZapatillasAsync();
+            return View(zapatillas);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(List<string> imagen)
+        {
+
+
+            ViewData["MENSAJE"] = "Se han agregado " + imagen.Count + " imágenes";
+            List<Zapatilla> zapatillas = await this.repo.GetZapatillasAsync();
+            return View(zapatillas);
         }
     }
 }
