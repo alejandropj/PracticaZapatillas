@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Zapatilla Imagen";
+}
+
+@model Imagen
+
+@{
+    Zapatilla zapatilla = ViewData["ZAPATILLASELECCIONADA"] as Zapatilla;
+}
+<h1>Zapatilla </h1>
+<a asp-action="List">Volver</a>
+<ul class="list-group">
+    <li class="list-group-item">
+        IdProducto: @zapatilla.IdProducto
+    </li>    
+    <li class="list-group-item">
+        Nombre: @zapatilla.Nombre
+    </li>    
+    <li class="list-group-item">
+        Descripcion: @zapatilla.Descripcion
+    </li>    
+    <li class="list-group-item">
+        Precio: @zapatilla.Precio
+    </li>
+</ul>
+<hr />
+<div id="partialImagenes"></div>
+
+
+@section Scripts{
+    <script>
+        function loadZapatillaPaginacion(posicion) {
+            $(document).ready(function () {
+                $("#partialImagenes").load("/Zapatillas/_ZapatillaPartial?posicion="
+                    + posicion + "&idZapatilla=" + @zapatilla.IdProducto);
+            });
+        }
+
+        loadZapatillaPaginacion(1);
+    </script>
+}

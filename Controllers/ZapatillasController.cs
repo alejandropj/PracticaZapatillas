@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
+using Microsoft.Win32;
 using PracticaZapatillas.Models;
 using PracticaZapatillas.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace PracticaZapatillas.Controllers
 {
@@ -21,7 +25,7 @@ namespace PracticaZapatillas.Controllers
             Zapatilla zapatilla = await this.repo.FindZapatillaAsync(idZapatilla);
             return View(zapatilla);
         }
-        public async Task<IActionResult> ImagenZapatilla
+        public async Task<IActionResult> ZapatillaImagen
             (int? posicion, int idZapatilla)
         {
             if (posicion == null)

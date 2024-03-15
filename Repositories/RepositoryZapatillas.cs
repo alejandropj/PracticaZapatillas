@@ -5,6 +5,28 @@ using PracticaZapatillas.Models;
 
 namespace PracticaZapatillas.Repositories
 {
+    #region PROCEDIMIENTO ALMACENADO
+    /*    create procedure SP_IMAGEN_ZAPATILLA
+    (@POSICION int, @ZAPATILLA int
+    , @REGISTROS int out)
+    as
+    select @REGISTROS = count(IDIMAGEN)
+    from IMAGENESZAPASPRACTICA
+    where IDPRODUCTO = @ZAPATILLA
+
+
+    select IDIMAGEN, IDPRODUCTO, IMAGEN
+    from(
+        select cast(
+            ROW_NUMBER() OVER (ORDER BY IMAGEN) as int) AS POSICION
+            , IDIMAGEN, IDPRODUCTO, IMAGEN
+
+            from IMAGENESZAPASPRACTICA
+
+            where IDPRODUCTO = @ZAPATILLA) as QUERY
+        where QUERY.POSICION = @POSICION
+    go*/
+    #endregion
     public class RepositoryZapatillas
     {
         private ZapatillasContext context;
@@ -35,7 +57,7 @@ namespace PracticaZapatillas.Repositories
         public async Task<ImagenPaginacion> GetZapatillaImagenAsync
             (int posicion, int idZapatilla)
         {
-            string sql = "";
+            string sql = "SP_IMAGEN_ZAPATILLA @POSICION, @ZAPATILLA, @REGISTROS OUT";
             SqlParameter pamPosicion = new SqlParameter("@POSICION", posicion);
             SqlParameter pamZapatilla = new SqlParameter("@ZAPATILLA", idZapatilla);
             SqlParameter pamRegistros = new SqlParameter("@REGISTROS", -1);

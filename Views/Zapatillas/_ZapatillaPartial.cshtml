@@ -5,34 +5,34 @@
 @model Imagen
 
 @{
-    Zapatilla zapatilla = ViewData["ZAPATILLASELECCIONADA"] as Zapatilla
+    Zapatilla zapatilla = ViewData["ZAPATILLASELECCIONADA"] as Zapatilla;
 }
 
-<h1>@ViewData["POSICION"] de @ViewData["ULTIMO"]</h1>
+<h1>Imagen @ViewData["POSICION"] de @ViewData["ULTIMO"]</h1>
 
 <ul class="list-group list-group-horizontal">
     <li class="list-group-item">
-        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(1)">
+        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(1)" id="primero">
             Primero
         </button>
     </li>
     <li class="list-group-item">
-        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["ANTERIOR"])">
+        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["ANTERIOR"])" id="anterior">
             Anterior
         </button>
     </li>
     <li class="list-group-item">
-        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["SIGUIENTE"])">
+        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["SIGUIENTE"])" id="siguiente">
             Siguiente
         </button>
     </li>
     <li class="list-group-item">
-        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["ULTIMO"])">
+        <button class="btn btn-dark" onclick="loadZapatillaPaginacion(@ViewData["ULTIMO"])" id="ultimo">
             Ultimo
         </button>
     </li>
 </ul>
 
-<ul class="list-group" id="cajaimagen">
-    <img style="width:150px" src="@Model.Imagen" />
-</ul>
+<div class="bg-primary" id="cajaimagen">
+    <img src='@Model.ImagenZapatilla' style="width:150px" />
+</div>
