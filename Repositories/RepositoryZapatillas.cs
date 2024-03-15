@@ -76,5 +76,23 @@ namespace PracticaZapatillas.Repositories
 
         }
 
+        public void AddImagen(int idZapatilla, List<string> imagenes)
+        {
+            int maxId = this.context.Imagenes.Max(i => i.IdImagen) + 1;
+
+            for (int i = 0; i < imagenes.Count; i++)
+            {
+
+                Imagen newImagen = new Imagen();
+                newImagen.IdImagen = maxId + i;
+                newImagen.IdProducto = idZapatilla;
+                newImagen.ImagenZapatilla = imagenes[i];
+
+                this.context.Imagenes.Add(newImagen);
+            }
+            this.context.SaveChanges();
+
+        }
+
     }
 }

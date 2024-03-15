@@ -7,24 +7,25 @@
 
 <h2 class="text-primary">@ViewData["MENSAJE"]</h2>
 
-<button onclick="agregarCaja()">Nueva caja imagen JQUERY</button>
+<button class="btn btn-dark" onclick="agregarCaja()">Nueva caja imagen JQUERY</button>
 
 <hr />
 
 <form method="post">
     <h1>Formulario</h1>
     <button class="btn btn-info">Insertar</button>
+    <br />
 
-    <label>Seleccione zapatilla</label>
-    <select name="zapatilla">
+    <label class="form-label">Seleccione zapatilla</label>
+    <select class="form-select" name="zapatilla">
         @foreach(Zapatilla zap in Model)
         {
             <option value="@zap.IdProducto">@zap.Nombre</option>
         }
     </select>
     <div id="cajaInputs">
-        <label>Imagen 1</label>
-        <input type="text" name="imagen" />
+        <label class='form-label'>Imagen 1</label>
+        <input class='form-control' type="text" name="imagen" />
     </div>
 </form>
 
@@ -34,8 +35,8 @@
 
         function agregarCaja(){
             var fila =
-                "<label>Imagen " + contador + "</label>" +
-                "<input type='text' name= 'imagen' /> ";
+                "<label class='form-label'>Imagen " + contador + "</label>" +
+                "<input class='form-control' type='text' name= 'imagen' /> ";
             document.getElementById("cajaInputs").insertAdjacentHTML("beforeend", fila);
             contador++;
         }

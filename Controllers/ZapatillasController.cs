@@ -96,11 +96,12 @@ namespace PracticaZapatillas.Controllers
             return View(zapatillas);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(List<string> imagen)
+        public async Task<IActionResult> Create(int zapatilla, List<string> imagen)
         {
-
-
+            this.repo.AddImagen(zapatilla, imagen);
             ViewData["MENSAJE"] = "Se han agregado " + imagen.Count + " imágenes";
+
+
             List<Zapatilla> zapatillas = await this.repo.GetZapatillasAsync();
             return View(zapatillas);
         }
