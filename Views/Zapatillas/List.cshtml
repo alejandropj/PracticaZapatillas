@@ -1,0 +1,48 @@
+﻿@model List<Zapatilla>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Zapatillas</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                IdProducto
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.IdProducto
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Descripcion
+            </td>
+            <td>
+                @item.Precio
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-idzapatilla="@item.IdProducto" class="btn btn-warning">Controller</a>
+                <a asp-action="" asp-route-idzapatilla="@item.IdProducto" class="btn btn-success">Ajax</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
